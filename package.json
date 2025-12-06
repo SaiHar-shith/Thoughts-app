@@ -1,0 +1,17 @@
+{
+  "name": "thoughts-app",
+  "version": "1.0.0",
+  "description": "A minimalist note-taking app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npx nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.1",
+    "dotenv": "^17.2.3",
+    "express": "^4.22.1",
+    "mongodb": "^7.0.0",
+    "mongoose": "^9.0.1"
+  }
+}

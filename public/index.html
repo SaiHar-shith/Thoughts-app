@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thoughts</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="brand">
+                <div class="logo-square"></div>
+                <h2>Thoughts</h2>
+            </div>
+            
+            <div id="theme-toggle" class="theme-switch-wrapper">
+                <i class="ri-moon-line"></i> <span>Dark Mode</span>
+            </div>
+            
+            <button class="new-note-btn">+ New Note</button>
+            
+            <div class="nav-section">
+                <div class="nav-label">WORKSPACE</div>
+                <div class="nav-item active" id="nav-all"><i class="ri-file-list-line"></i> All Notes</div>
+                <div class="nav-item" id="nav-fav"><i class="ri-star-line"></i> Favorites</div>
+                <div class="nav-item" id="nav-trash"><i class="ri-delete-bin-line"></i> Trash</div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-label">FOLDERS <span class="add-folder" id="add-folder-btn" title="Create Folder">+</span></div>
+                <div id="folder-list"></div>
+            </div>
+        </div>
+
+        <div class="list-panel">
+            <div class="search-wrapper">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder="Search..." class="search-input">
+            </div>
+            <div class="list-header-wrapper">
+                <div class="list-header">All Notes</div>
+            </div>
+            <div id="notes-container"></div>
+        </div>
+
+        <div class="editor-panel">
+            <div class="toolbar">
+                <button id="boldBtn"><i class="ri-bold"></i></button>
+                <button id="italicBtn"><i class="ri-italic"></i></button>
+                <button id="strikeBtn"><i class="ri-strikethrough"></i></button>
+                <span class="divider">|</span>
+                <button id="h1Btn"><i class="ri-h-1"></i></button>
+                <button id="h2Btn"><i class="ri-h-2"></i></button>
+                <button id="listBtn"><i class="ri-list-unordered"></i></button>
+            </div>
+            
+            <div class="editor-content" id="editor"></div>
+            
+            <div id="status-bar">
+                <span id="word-count">0 words</span>
+                <span id="char-count">0 characters</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <div id="delete-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="ri-error-warning-line"></i>
+                <h3>Delete Forever?</h3>
+            </div>
+            <p>You are about to permanently delete this note.</p>
+            <div class="modal-actions">
+                <button id="cancel-delete-btn" class="btn-cancel">Cancel</button>
+                <button id="confirm-delete-btn" class="btn-delete">Delete Forever</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="delete-folder-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="ri-folder-reduce-line"></i>
+                <h3>Delete Folder?</h3>
+            </div>
+            <p>Delete <b id="del-folder-name"></b>? Notes moved to <b>General</b>.</p>
+            <div class="modal-actions">
+                <button id="cancel-folder-btn" class="btn-cancel">Cancel</button>
+                <button id="confirm-folder-btn" class="btn-delete">Delete Folder</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="create-folder-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header header-blue">
+                <i class="ri-folder-add-line"></i>
+                <h3>New Folder</h3>
+            </div>
+            <p>Enter a name for your new folder:</p>
+            <input type="text" id="new-folder-input" class="modal-input" placeholder="e.g. Project Alpha" autocomplete="off">
+            <div class="modal-actions">
+                <button id="cancel-create-folder-btn" class="btn-cancel">Cancel</button>
+                <button id="confirm-create-folder-btn" class="btn-create">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="empty-trash-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="ri-delete-bin-2-line"></i>
+                <h3>Empty Trash?</h3>
+            </div>
+            <p>Delete all notes in trash forever?</p>
+            <div class="modal-actions">
+                <button id="cancel-empty-trash-btn" class="btn-cancel">Cancel</button>
+                <button id="confirm-empty-trash-btn" class="btn-delete">Empty Trash</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="move-note-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header header-blue">
+                <i class="ri-folder-transfer-line"></i>
+                <h3>Move Note</h3>
+            </div>
+            <p>Select destination folder:</p>
+            <select id="folder-select" class="modal-select"></select>
+            <div class="modal-actions">
+                <button id="cancel-move-btn" class="btn-cancel">Cancel</button>
+                <button id="confirm-move-btn" class="btn-create">Move Here</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
